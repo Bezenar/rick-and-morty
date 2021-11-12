@@ -1,0 +1,81 @@
+@import './assets//styles/reset';
+@import './assets/styles/global';
+@import './assets/styles/colors';
+@import './assets/styles/widths';
+@import './assets//styles/flex';
+@import './assets//styles/margPad';
+@import './assets//styles/btns';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.link {
+  color: #0000f1;  
+  cursor: pointer;
+  transition: all 0.3s linear;
+  &:hover {
+    color: darkblue;
+    text-decoration: underline;
+  }
+}
+
+.overlay {
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100vh;
+  background: rgba(black, .8);
+  .modal-window {
+    cursor: default;
+  }
+}
+
+.loader {
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  &__inner {
+    position: absolute;
+    z-index: 1;
+    width: 40%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    animation: loader 1.8s linear infinite;
+  }
+}
+
+.footer {
+  position: sticky;
+  width: 100%;
+  
+}
+
+@keyframes loader {
+  0% {
+    left: -40%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: -40%;
+  }
+}

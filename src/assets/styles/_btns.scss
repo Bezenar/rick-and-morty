@@ -1,0 +1,51 @@
+
+$btnTextLightColor: white;
+$btnTextDarkColor: black;
+$roundValue: ("s": 4, "m": 8, "l": 12);
+.btn {
+  transition: all 0.5s linear;
+  cursor: pointer;
+  color: $btnTextLightColor;
+  position: relative;
+  z-index: 1;
+  &--rounded {
+    @each $abr, $value in $roundValue {
+      &-#{$abr} {
+        border-radius: $value;
+      }
+    }
+  }
+  &--text {
+    border: none;
+    outline: none;
+  }
+  &--icon {
+    &:hover {
+      transform: scale(1.1);
+    }
+    &.btn {
+      &--outlined {
+        border: 1px solid map-get($map: $colors, $key: 'dark' )
+      }
+    }
+  }
+  @each $name, $color in $colors {
+    &--#{$name} {
+      background-color: #{$color};
+      border: 1px solid #{$color};
+      &:hover {
+        filter: saturate(0) grayscale(1) brightness(.7) contrast(100%) invert(1);
+      }
+      &.btn {
+        &--outlined {
+          background-color: transparent;
+          color: $btnTextDarkColor;
+          &:hover {
+            background-color: #{$color};
+            color: $btnTextLightColor,
+          }
+        }
+      }
+    }
+  }
+}

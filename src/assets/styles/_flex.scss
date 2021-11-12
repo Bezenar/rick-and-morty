@@ -1,0 +1,33 @@
+$dir: ('col': 'column', 'rrev': 'row-reverse');
+$ai: ('center': 'center', 'start': 'flex-start');
+$jc: ('sb': 'space-between', 'center': 'center', 'end': 'flex-end');
+
+
+
+.flex {
+  display: flex;
+  &-wrap {
+    flex-wrap: wrap;
+  }
+  &.dir {
+    @each $name, $property in $dir {
+      &--#{$name} {
+        flex-direction: #{$property};
+      }
+    }
+  }
+  &.ai {
+    @each $name, $property in $ai {
+      &--#{$name} {
+        align-items: #{$property};
+      }
+    }
+  }
+  &.jc {
+    @each $name, $property in $jc {
+      &--#{$name} {
+        justify-content: #{$property};
+      }
+    }
+  }
+}

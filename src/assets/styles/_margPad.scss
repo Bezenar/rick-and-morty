@@ -1,0 +1,70 @@
+$value: 4;
+$size: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+$directions: t, b, l, r;
+
+@mixin assignDir($prop, $d, $s) {
+  @if ($d == t) {
+    #{$prop}-top: #{$s * $value}px;
+  }
+  @if ($d == b) {
+    #{$prop}-bottom: #{$s * $value}px;
+  }
+  @if ($d == l) {
+    #{$prop}-left: #{$s * $value}px;
+  }
+  @if ($d == r) {
+    #{$prop}-right: #{$s * $value}px;
+  }
+}
+
+.m {
+  &--center {
+    margin: 0 auto;
+  }
+  @each $dir in $directions {
+    &--#{$dir} {
+      @each $s in $size {
+        &-#{$s} {
+          @include assignDir('margin', $dir, $s);
+        }
+      }
+    }
+  }
+  @each $s in $size {
+    &--a-#{$s} {
+      margin: #{$s * $value}px;
+    }
+    &--#{$s} {
+      @each $s2 in $size {
+        &-#{$s2} {
+          margin: #{$s * $value}px #{$s2 * $value}px;
+        }
+      }
+    }
+  }
+}
+
+.p {
+  @each $dir in $directions {
+    &--#{$dir} {
+      @each $s in $size {
+        &-#{$s} {
+          @include assignDir('padding', $dir, $s);
+        }
+      }
+    }
+  }
+
+  @each $s in $size {
+    &--a-#{$s} {
+      padding: #{$s * $value}px;
+    }
+    &--#{$s} {
+      @each $s2 in $size {
+        &-#{$s2} {
+          padding: #{$s * $value}px #{$s2 * $value}px;
+        }
+      }
+    }
+  }
+}

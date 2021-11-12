@@ -1,0 +1,9 @@
+$widths: 25, 30, 50, 70, 100;
+
+.wid {
+  @each $w in $widths {
+    &--#{$w} {
+      width: #{$w + '%'};
+    }
+  }
+}

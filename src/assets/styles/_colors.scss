@@ -1,0 +1,42 @@
+$colors: (
+  'dark': black,
+  'primary': blue,
+  'success': green,
+  'danger': red,
+  'light': lightgrey,
+  'disabled': grey,
+);
+
+$onlyBgColors: (
+  'white': white
+);
+
+$onlyTextColors: (
+  'link': darkblue
+);
+
+.text {
+  @each $name, $prop in $colors {
+    &--#{$name} {
+      color: #{$prop};
+    }
+  }
+  @each $name, $prop in $onlyTextColors {
+    &--#{$name} {
+      color: #{$prop};
+    }
+  }
+}
+
+.bg {
+  @each $name, $color in $colors {
+    &--#{$name} {
+      background: #{$color};
+    }
+  }
+  @each $name, $color in $onlyBgColors {
+    &--#{$name} {
+      background: #{$color};
+    }
+  }
+}

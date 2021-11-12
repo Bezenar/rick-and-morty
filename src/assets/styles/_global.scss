@@ -1,0 +1,31 @@
+$containerMaxWidth: 1200px;
+$containerWidth: 90%;
+$roundValue: ("s": 4, "m": 8, "l": 12);
+
+.container {
+  width: $containerWidth;
+  max-width: $containerMaxWidth;
+  margin: 0 auto;
+}
+.h {
+  &--full {
+    height: 100%;
+  }
+}
+
+.rounded {
+  @each $name, $val in $roundValue {
+    &--#{$name} {
+      border-radius: #{$val}px;
+    }
+  }
+}
+
+.text {
+  &--center {
+    text-align: center;
+  }
+  &--right {
+    text-align: right;
+  }
+}
